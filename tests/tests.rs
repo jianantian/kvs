@@ -63,13 +63,11 @@ fn cli_set() {
 
 #[test]
 fn cli_get_stored() -> Result<()> {
-    let temp_dir = TempDir::new().expect("unable to create temporary working directory");
-
+    let temp_dir = TempDir::new_in("tmp").expect("unable to create temporary working directory");
     let mut store = KvStore::open(temp_dir.path())?;
     store.set("key1".to_owned(), "value1".to_owned())?;
     store.set("key2".to_owned(), "value2".to_owned())?;
     drop(store);
-
     Command::cargo_bin("kvs")
         .unwrap()
         .args(&["get", "key1"])

@@ -1,6 +1,5 @@
 extern crate serde;
-extern crate ron;
-extern crate uuid;
+extern crate serde_json;
 
 pub use error::Result;
 pub use kv::KvStore;

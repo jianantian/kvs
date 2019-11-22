@@ -4,12 +4,12 @@ use std::io::{BufReader, BufWriter, SeekFrom, Read, Seek, Write};
 
 pub struct BufReaderWithPos<W: Read + Seek> {
   reader: BufReader<W>,
-  pos: u64,
+  pub pos: u64,
 }
 
 pub struct BufWriterWithPos<W: Write + Seek> {
   writer: BufWriter<W>,
-  pos: u64,
+  pub pos: u64,
 }
 
 impl<R: Read + Seek> BufReaderWithPos<R> {
